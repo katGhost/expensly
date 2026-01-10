@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useGroups } from '../../src/controllers/useGroups';
 
@@ -24,7 +25,7 @@ export default function HomeScreen() {
           <Text style={styles.title}>Groups</Text>
         </View>
         {/* Dummy group add */}
-        <View style={styles.groupView}>
+        <View>
           <Pressable style={styles.addBtn} onPress={() => {
             addGroup({
               id: Date.now().toString(),
@@ -35,10 +36,16 @@ export default function HomeScreen() {
           }}>
             <Text>Add Group</Text>
           </Pressable>
-
-          <GroupList groups={groups} />
-
         </View>
+        {/*  On press get group details */}
+        {groups.map(group => (
+          <Pressable key={group.id} onPress={() => {
+            router.push(`/groups/${group.id}`)
+            //console.warn('groupsId does not exist yet');
+          }}>
+            <Text>{group.name}</Text>
+          </Pressable>
+        ))}
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -59,7 +66,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
   },
-  groupView: {},
+  groupView: {
+    
+  },
   addBtn: {
     width: '50%',
     backgroundColor: 'skyblue',
