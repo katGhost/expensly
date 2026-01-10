@@ -1,7 +1,7 @@
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
 import React from 'react';
+import { Tabs } from 'expo-router';
 import { useColorScheme as rnUseColorScheme } from 'react-native';
+import { FontAwesome5,MaterialIcons } from '@expo/vector-icons';
 import HapticTab from '../../src/components/HapticTab';
 
 
@@ -23,15 +23,15 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <FontAwesome5 name="home" size={24} color={color} />,
+          title: 'Dashboard',
+          tabBarIcon: ({ color }) => <MaterialIcons name="space-dashboard" size={18} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="expenses"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <FontAwesome5 name="file-invoice-dollar" size={24} color={color} />,
+          title: 'Expenses',
+          tabBarIcon: ({ color }) => <FontAwesome5 name="file-invoice-dollar" size={18} color={color} />,
         }}
       />
     </Tabs>
